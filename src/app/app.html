@@ -1,0 +1,37 @@
+<ion-menu type="overlay" [content]="content" class="side-menu">
+  <ion-header menuClose padding class="header">
+    <ion-item no-lines no-padding class="row">
+      <ion-thumbnail item-start no-margin class="char-name-main center_col" [ngClass]="'text_bg_i'">
+        <h2 text-center class="name-char">
+           I
+        </h2>
+      </ion-thumbnail>
+      <h2 class="user-name">Image Galary</h2>
+      <p class="user-email">{{this.authService.getUserEmail() != null ? this.authService.getUserEmail() : 'imagegalary@gmail.com'}}</p>
+    </ion-item>
+  </ion-header>
+
+  <ion-content class="menu-list-content">
+    <ion-list class="menu-list">
+      <button menuClose ion-item text-uppercase no-padding class="menu-item" *ngFor="let item of pages" (click)="openPage(item)">
+        <ion-avatar item-left class="menu-icon">
+          <img class="menu-icon-img" src="{{item.iconSrc}}" />
+        </ion-avatar>
+
+        {{item.title}}
+      </button>
+
+      <button menuClose ion-item text-uppercase no-padding class="menu-item" (click)="doLogout()">
+        <ion-avatar item-left class="menu-icon">
+          <img class="menu-icon-img" src="assets/icon/menu/logout.png" />
+        </ion-avatar>
+
+        Logout
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="padding-10">
+  <ion-list>
+    <ion-item>
+      <ion-label floating>E-Mail</ion-label>
+      <ion-input type="email" [(ngModel)]="loginData.email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="loginData.password"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <p text-center>
+    OR
+  </p>
+
+  <ion-row align-items-center>
+    <button ion-button class="margin-auto" (click)="openSignUpPage()">Signup</button>
+  </ion-row>
+
+</ion-content>
+
+<ion-footer no-padding no-margin class="custom-footer">
+  <button ion-button full no-padding no-margin [disabled]="!loginData.email || !loginData.password" (click)="doLogin()">Login</button>
+</ion-footer>
